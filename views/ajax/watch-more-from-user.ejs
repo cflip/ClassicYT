@@ -1,0 +1,51 @@
+<!-- begin watch-more-from-user -->
+<div id="watch-channel-discoverbox" class="yt-rounded" data-slider-slide-selected="1">
+	<div class="yt-uix-slider yt-uix-slider-fluid">
+	<button class="yt-uix-button yt-uix-slider-prev" onclick="return false;">
+		<img class="yt-uix-slider-prev-arrow" src="/pixel.gif" alt="Previous" />
+	</button>
+	<button class="yt-uix-button yt-uix-slider-next" onclick="return false;">
+		<img class="yt-uix-slider-next-arrow" src="/pixel.gif" alt="Next" />
+	</button>
+	<a>See all ??? videos</a>
+	<button class="yt-uix-button yt-uix-slider-num" onclick="return false;">1</button>
+	<button class="yt-uix-button yt-uix-slider-num" onclick="return false;">2</button>
+	<button class="yt-uix-button yt-uix-slider-num" onclick="return false;">3</button>
+	<button class="yt-uix-button yt-uix-slider-num" onclick="return false;">4</button>
+	<div class="yt-uix-slider-body">
+		<div class="yt-uix-slider-slide">
+		<div class="video-grid">
+			<ol class="video-list">
+<% videos.forEach(video => { %>
+				<li class="video-list-item">
+					<a href="/watch?v=<%= video.videoId %>" class="video-list-item-link">
+					<span class="ux-thumb-wrap">
+						<span class="video-thumb ux-thumb-96">
+						<span class="clip">
+							<img src="<%= video.thumbnailUrl %>" alt="Thumbnail" data-thumb="<%= video.thumbnailUrl %>" data-group-key="thumb-group-0" />
+						</span>
+						</span>
+						<span class="video-time"><%= video.lengthString %></span>
+						<button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-id="shared-addto-menu" data-video-ids="<%= video.videoId %>" data-feature="thumbnail" role="button">
+						<img class="yt-uix-button-icon yt-uix-button-icon-addto" src="/pixel.gif" alt="" />
+						<span class="yt-uix-button-content">
+							<span class="addto-label">Add to</span>
+						</span>
+						<img class="yt-uix-button-arrow" src="/pixel.gif" alt="" />
+						</button>
+					</span>
+					<span dir="ltr" class="title" title="<%= video.title %>"><%= video.title %></span>
+					<span class="stat">by <%= video.channelName %></span>
+					<span class="stat view-count"><%= video.viewCount.toLocaleString() %> views</span>
+					</a>
+				</li>
+<% }) %>
+			</ol>
+		</div>
+		</div>
+		<div class="yt-uix-slider-shade-left"></div>
+		<div class="yt-uix-slider-shade-right"></div>
+	</div>
+	</div>
+</div>
+<!-- end watch-more-from-user -->

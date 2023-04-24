@@ -1,0 +1,16 @@
+<ul id="watch-related" class="video-list">
+	<% suggestedVideos.forEach(suggestion => { %>
+	<li class="video-list-item">
+		<a href="/watch?v=<%= suggestion.videoId %>&amp;feature=related" class="video-list-item-link">
+			<span class="ux-thumb-wrap">
+				<span class="video-thumb ux-thumb-96">
+					<span class="clip"><img src="/pixel.gif" alt="Thumbnail" data-thumb="<%= suggestion.thumbnailUrl %>" /></span></span>
+				<span class="video-time"><%= suggestion.lengthString %></span
+				><button type="button" class="addto-button short video-actions yt-uix-button yt-uix-button-short" onclick=";return false;" data-button-menu-id="shared-addto-menu" data-video-ids="<%= suggestion.videoId %>" data-feature="thumbnail" role="button">
+					<img class="yt-uix-button-icon yt-uix-button-icon-addto" src="/pixel.gif" alt="" /><span class="yt-uix-button-content"><span class="addto-label">Add to</span></span
+					><img class="yt-uix-button-arrow" src="/pixel.gif" alt="" /></button></span
+			><span dir="ltr" class="title" title="<%= suggestion.title %>"><%- suggestion.title %></span><span class="stat">by <%= suggestion.channelName %></span><span class="stat view-count"><%= suggestion.viewCount.toLocaleString() %> views</span></a
+		>
+	</li>
+	<% }) %>
+</ul>

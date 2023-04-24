@@ -1,0 +1,543 @@
+<div id="user_playlist_navigator" class="outer-box yt-rounded">
+	<div id="playnav-channel-header" class="inner-box-bg-color">
+	  <div id="playnav-navbar-toggle">
+		<a title="Switch to Grid View" href="javascript:;" onclick="playnav.selectView('grid');" id="gridview-icon" class="view-button">
+		  <div class="contents">
+			<div class="a yt xl"></div>
+			<div class="a yt xc"></div>
+			<div class="a yt xr"></div>
+			<div class="a yc xl"></div>
+			<div class="a yc xc"></div>
+			<div class="a yc xr"></div>
+			<div class="a yb xl"></div>
+			<div class="a yb xc"></div>
+			<div class="a yb xr"></div>
+		  </div>
+		</a>
+
+		<a title="Switch to Player View" href="javascript:;" onclick="playnav.selectView('play');" id="playview-icon" class="view-button view-button-selected">
+		  <div class="contents">
+			<div class="a box"></div>
+			<div class="a tri"></div>
+			<div class="a yt"></div>
+			<div class="a yc"></div>
+			<div class="a yb"></div>
+		  </div>
+		</a>
+	  </div>
+
+	  <div id="playnav-title-bar">
+		<div id="playnav-channel-name" class="outer-box-bg-color">
+		  <div class="channel-thumb-holder outer-box-color-as-border-color">
+			<div class="user-thumb-semismall">
+			  <div>
+				<img id="" src="<%= channel.profileImageUrl %>" alt="" />
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="channel-title-container">
+			<div class="channel-title outer-box-color" id="channel_title" dir="ltr"><%= channel.channelTitle %></div>
+			<div class="channel-title outer-box-color" style="font-size: 11px" id="channel_base_title"><%= channel.channelName %>'s Channel</div>
+		  </div>
+
+		  <div id="subscribe-buttons">
+			<span class="subscription-container" data-subscription-expandable-id="subscription-button-module-menu" data-subscription-channels-container="subscription-recommended-channels" data-subscription-value="paulsoaresjr" data-subscription-menu-type="expander" data-subscription-xsrf="" data-subscription-feature="channel" data-subscription-type="user">
+			  <button type="button" class="subscribe-button yt-uix-button yt-uix-button-urgent yt-uix-tooltip" onclick=";return false;" title="Click to be notified of new videos from this channel" data-loaded="true" data-button-action="yt.www.subscriptions.button.toggleMenu" role="button" aria-pressed="false"><span class="yt-uix-button-content">Subscribe</span></button>
+
+			  <span class="subscription-subscribed-container hid"
+				><span class="subscription-options-button subscription-expander yt-uix-expander yt-uix-expander-collapsed" data-expander-action="yt.www.subscriptions.button.toggleMenu"
+				  ><span class="yt-uix-expander-head yt-rounded"
+					><button class="yt-uix-expander-arrow" onclick="return false;"></button><span class="yt-alert yt-alert-success yt-alert-small yt-alert-naked yt-rounded"><img src="/pixel.gif" class="icon" alt="Alert icon" /><span class="yt-alert-content">Subscribed</span></span></span
+				  ></span
+				></span
+			  >
+			</span>
+		  </div>
+		</div>
+		<div id="playnav-chevron">&nbsp;</div>
+	  </div>
+
+	  <div id="playnav-navbar">
+		<table>
+		  <tbody>
+			<tr>
+			  <td>
+				<a class="navbar-tab inner-box-link-color navbar-tab-selected" id="playnav-navbar-tab-uploads" href="javascript:;" onclick="playnav.selectTab('uploads');yt.analytics.trackEvent('menu', 'uploads');">Uploads</a>
+			  </td>
+
+			  <td>
+				<a class="navbar-tab inner-box-link-color" id="playnav-navbar-tab-playlists" href="javascript:;" onclick="playnav.selectTab('playlists');yt.analytics.trackEvent('menu', 'playlists');">Playlists</a>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+	  </div>
+
+	  <div class="cb"></div>
+	</div>
+
+	<div id="subscribeMessage" class="hid">&nbsp;</div>
+	<div id="subscription-button-module-menu" class="hid subscription-menu-expandable subscription-menu">
+	  <div class="subscription-menu-not-logged-in">
+		<strong><a href="https://www.google.com/accounts/ServiceLogin?uilel=3&amp;service=youtube&amp;passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252Fuser%252Fpaulsoaresjr&amp;hl=en_US&amp;ltmpl=sso">Sign In</a> or <a href="/signup?new=true&amp;next=%2Fuser%2Fpaulsoaresjr">Sign Up</a> now! </strong>
+	  </div>
+	</div>
+
+	<div id="user_playlist_navigator-messages" class="hid"></div>
+	<script>
+	  yt.setConfig({
+		SWF_AD_EURL: '\/user\/<%= channel.channelId %>',
+	  });
+
+	  playnav.setVideoId('<%= channel.featuredVideoId %>');
+	  window.defaultPlaylistName = 'uploads';
+	</script>
+
+	<div id="playnav-body">
+	  <div id="playnav-player" class="playnav-player-container">
+		<div id="profile-noplayer-div">Hello, you either have JavaScript turned off or an old version of Adobe's Flash Player. <a href="http://www.adobe.com/go/getflashplayer/">Get the latest Flash player</a>.</div>
+	  </div>
+
+	  <script>
+		var featuredVideoMetadata = {
+		  swfcfg: {
+			url: 'http:\/\/s.ytimg.com\/yt\/swfbin\/watch_as3-vflN3Bq2C.swf',
+			min_version: '8.0.0',
+			args: {
+			  ptk: 'paulsoaresjr%2Buser',
+			  hl: 'en_US',
+			  iv_close_button: 0,
+			  mpvid: 'AASqyUbhyZ-TwlAG',
+			  showinfo: 0,
+			  allow_ratings: 1,
+			  keywords: 'minecraft,minecraft survival,minecraft dad,minecraft family,family server,minecraft server,minecraft multiplayer,man vs wild,survivorman,minecraft smp,minecraft beta,minecraft farming,paulsoaresjr,gameplay,commentary,guide,playthrough,tutorial,gaming,role-play,video game',
+			  cc3_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/subtitles3_module-vfl552xhU.swf',
+			  track_embed: 1,
+			  host_language: 'en',
+			  ps: 'default',
+			  ad_flags: 0,
+			  fmt_list: '45\/1280x720\/99\/0\/0,22\/1280x720\/9\/0\/115,44\/854x480\/99\/0\/0,35\/854x480\/9\/0\/115,43\/640x360\/99\/0\/0,34\/640x360\/9\/0\/115,18\/640x360\/9\/0\/115,5\/320x240\/7\/0\/0',
+			  iv_storage_server: 'http:\/\/www.google.com\/reviews\/y\/',
+			  invideo: true,
+			  targeting_video_doc_id: '',
+			  cc_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/subtitle_module-vfl7MUVpo.swf',
+			  trueview: true,
+			  iurlmaxres: 'http:\/\/i2.ytimg.com\/vi\/ImXfJAxVWXo\/maxresdefault.jpg',
+			  iv_storage_server_html5: 'http:\/\/www.youtube.com\/api\/reviews\/y\/',
+			  ad_preroll: '1',
+			  iv_load_policy: 1,
+			  cc_font: 'Arial Unicode MS, arial, verdana, _sans',
+			  ad_channel_code_instream: 'afv_brand_instream,afv_instream_us,afv_user_paulsoaresjr,ytps_default,ytel_profilepage,yt_mpvid_AASqyUbhyZ-TwlAG,yt_cid_509879,ivpypp,ytexp_912202.913519.910206',
+			  cafe_experiment_id: '',
+			  timestamp: 1313681361,
+			  cc_asr: 1,
+			  ad_host: 'ca-host-pub-7807408098209079',
+			  iv3_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/iv3_module-vflz_nt9z.swf',
+			  ad_eurl: 'http:\/\/www.youtube.com\/video\/ImXfJAxVWXo',
+			  mpu: true,
+			  url_encoded_fmt_stream_map:
+				'url=http%3A%2F%2Fv9.lscache5.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Cratebypass%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26itag%3D45%26ip%3D0.0.0.0%26signature%3D5F4892D7612739852C2BB36E3C7221F56E66F7FF.CE8F798160019885D2CB166F4B88B4B1FD7DDCDE%26sver%3D3%26ratebypass%3Dyes%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26id%3D2265df240c55597a\u0026quality=hd720\u0026fallback_host=tc.v9.cache5.c.youtube.com\u0026type=video%2Fwebm%3B+codecs%3D%22vp8.0%2C+vorbis%22\u0026itag=45,url=http%3A%2F%2Fv20.lscache4.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Cratebypass%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26itag%3D22%26ip%3D0.0.0.0%26signature%3D49E33E61F2FE6FCD44F27545C270E3DF69C7D359.7E9CDA58CC1368D132987056C6D8FBD57EE3CBA6%26sver%3D3%26ratebypass%3Dyes%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26id%3D2265df240c55597a\u0026quality=hd720\u0026fallback_host=tc.v20.cache4.c.youtube.com\u0026type=video%2Fmp4%3B+codecs%3D%22avc1.64001F%2C+mp4a.40.2%22\u0026itag=22,url=http%3A%2F%2Fv12.lscache4.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Cratebypass%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26itag%3D44%26ip%3D0.0.0.0%26signature%3D684BC3DF6E9224141D98E2975A4C284205DC4DEA.B1568AAA0E5D7C79AEE21707762D99C170CA0957%26sver%3D3%26ratebypass%3Dyes%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26id%3D2265df240c55597a\u0026quality=large\u0026fallback_host=tc.v12.cache4.c.youtube.com\u0026type=video%2Fwebm%3B+codecs%3D%22vp8.0%2C+vorbis%22\u0026itag=44,url=http%3A%2F%2Fv3.lscache8.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Calgorithm%252Cburst%252Cfactor%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26algorithm%3Dthrottle-factor%26itag%3D35%26ip%3D0.0.0.0%26burst%3D40%26sver%3D3%26signature%3D605F80A0A57D4CADC76C51752F0CC582786D79E0.2A6E59DB5268FA69DE2F62E7B49B37A1F64BF5DA%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26factor%3D1.25%26id%3D2265df240c55597a\u0026quality=large\u0026fallback_host=tc.v3.cache8.c.youtube.com\u0026type=video%2Fx-flv\u0026itag=35,url=http%3A%2F%2Fv1.lscache5.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Cratebypass%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26itag%3D43%26ip%3D0.0.0.0%26signature%3D95A922FB65CA9C15C94499EA169765FB8C0E4D54.04DB0D8565FF4E661CB941D3D3DA42A0B2CE5EB6%26sver%3D3%26ratebypass%3Dyes%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26id%3D2265df240c55597a\u0026quality=medium\u0026fallback_host=tc.v1.cache5.c.youtube.com\u0026type=video%2Fwebm%3B+codecs%3D%22vp8.0%2C+vorbis%22\u0026itag=43,url=http%3A%2F%2Fv17.lscache3.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Calgorithm%252Cburst%252Cfactor%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26algorithm%3Dthrottle-factor%26itag%3D34%26ip%3D0.0.0.0%26burst%3D40%26sver%3D3%26signature%3D7AD6AB16F6CB934C8C8CC007AA00A8A54593950B.86EC5EB7DC04569FC9BC13F3CA090487A3E1DA33%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26factor%3D1.25%26id%3D2265df240c55597a\u0026quality=medium\u0026fallback_host=tc.v17.cache3.c.youtube.com\u0026type=video%2Fx-flv\u0026itag=34,url=http%3A%2F%2Fv24.lscache5.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Cratebypass%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26itag%3D18%26ip%3D0.0.0.0%26signature%3DA9E2DB12BF308374E83E23C3D05CBABB02D11822.C675CCDACCCA98652D5986C734E585C38A73D65F%26sver%3D3%26ratebypass%3Dyes%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26id%3D2265df240c55597a\u0026quality=medium\u0026fallback_host=tc.v24.cache5.c.youtube.com\u0026type=video%2Fmp4%3B+codecs%3D%22avc1.42001E%2C+mp4a.40.2%22\u0026itag=18,url=http%3A%2F%2Fv6.lscache1.c.youtube.com%2Fvideoplayback%3Fsparams%3Did%252Cexpire%252Cip%252Cipbits%252Citag%252Calgorithm%252Cburst%252Cfactor%252Coc%253AU0hQSFdLUl9FSkNOMF9PRVZJ%26fexp%3D912202%252C913519%252C910206%26algorithm%3Dthrottle-factor%26itag%3D5%26ip%3D0.0.0.0%26burst%3D40%26sver%3D3%26signature%3D68BF8D35800E51A505826A2C4BADCE2CEA258470.D95AB37C329EEEFCE9DFC8545BDC9994CA03D2E1%26expire%3D1313704800%26key%3Dyt1%26ipbits%3D0%26factor%3D1.25%26id%3D2265df240c55597a\u0026quality=small\u0026fallback_host=tc.v6.cache1.c.youtube.com\u0026type=video%2Fx-flv\u0026itag=5',
+			  tmi: '1',
+			  iv_logging_level: 3,
+			  no_get_video_log: '1',
+			  iurl: 'http:\/\/i2.ytimg.com\/vi\/ImXfJAxVWXo\/hqdefault.jpg',
+			  endscreen_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/endscreen-vflgc2v2_.swf',
+			  cid: 509879,
+			  referrer: null,
+			  avg_rating: 4.89747970953,
+			  afv_instream_max: 15000,
+			  ad_logging_flag: 1,
+			  token: 'vjVQa1PpcFNIS4lmb2TpTmEAFHJf78H-BMEh-5dpW4I=',
+			  thumbnail_url: 'http:\/\/i2.ytimg.com\/vi\/ImXfJAxVWXo\/default.jpg',
+			  sffb: true,
+			  showsearch: 0,
+			  ttsurl: 'http:\/\/www.youtube.com\/api\/timedtext?sparams=asr_langs%2Ccaps%2Cexpire%2Cv\u0026asr_langs=en%2Cja\u0026caps=asr\u0026expire=1313704800\u0026key=yttt1\u0026signature=22AB7F783B2A9F2F9093059BA4ED398A35C70C90.BED88572A931E8EE7E19B375389BA2A93B357504\u0026hl=en',
+			  el: 'profilepage',
+			  fexp: '912202,913519,910206',
+			  ss: '1',
+			  creator: 'paulsoaresjr',
+			  allow_embed: 1,
+			  ad_host_tier: '1001145',
+			  vq: 'auto',
+			  iv_enabled_features: 'TCS',
+			  pyv_in_related_cafe_experiment_id: '',
+			  ad3_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/ad3-vflrmTEd6.swf',
+			  gut_tag: '\/4061\/ytpwatch\/main_509879',
+			  ptchn: 'paulsoaresjr',
+			  plid: 'AASqyUbh8IW7F3CX',
+			  author: 'paulsoaresjr',
+			  muted: '0',
+			  aftv: true,
+			  length_seconds: 1541,
+			  enablejsapi: 1,
+			  rel: 0,
+			  has_cc: true,
+			  iv_module: 'http:\/\/s.ytimg.com\/yt\/swfbin\/iv_module-vflb_oCA_.swf',
+			  afv: true,
+			  ftoken: '',
+			  ad_tag: 'http:\/\/ad-g.doubleclick.net\/pfadx\/com.ytpwatch.gadgetsandgames\/main_509879;sz=WIDTHxHEIGHT;mpvid=AASqyUbhyZ-TwlAG;!c=509879;kvid=ImXfJAxVWXo;ytexp=912202.913519.910206;kpid=509879;kga=-1;kgg=-1;kcr=ru;khd=1;longform=1;klg=en;kpu=paulsoaresjr;kr=F;ko=y;ytps=default;ytvt=c;afct=site_content;kt=K;u=ImXfJAxVWXo|509879;afv=1;ytc=paulsoaresjr;dc_dedup=1;',
+			  ad_video_pub_id: 'ca-pub-6219811747049371',
+			  iurlsd: 'http:\/\/i2.ytimg.com\/vi\/ImXfJAxVWXo\/sddefault.jpg',
+			  status: 'ok',
+			  ad_slots: '0',
+			  fs: '1',
+			  watermark: 'http:\/\/s.ytimg.com\/yt\/swf\/logo-vfl_bP6ud.swf,http:\/\/s.ytimg.com\/yt\/swf\/hdlogo-vfloR6wva.swf',
+			  oid: '7fixA7Irx10',
+			  view_count: 552319,
+			  eurl: 'http:\/\/www.youtube.com\/user\/paulsoaresjr',
+			  ad_channel_code_overlay: 'invideo_overlay_480x70_cat20,afv_brand,afv_user_paulsoaresjr,ytps_default,ytel_profilepage,yt_mpvid_AASqyUbhyZ-TwlAG,yt_cid_509879,ivpypp,ytexp_912202.913519.910206',
+			  as_launched_in_country: '1',
+			  video_id: 'ImXfJAxVWXo',
+			  dclk: true,
+			  instream: true,
+			  sk: 'ajSJDa7fNfzTgJi1UBNV1JSpgpcBx05hC',
+			  autoplay: '1',
+			},
+			url_v9as2: '',
+			params: { allowscriptaccess: 'always', allowfullscreen: 'true', bgcolor: '#000000' },
+			attrs: { width: '640', id: 'movie_player', height: '390' },
+			url_v8: '',
+		  },
+		  info_panel_html:
+			'\n    \u003cdiv id="channel-like-action"\u003e\n      \u003cdiv id="channel-like-buttons"\u003e\n        \u003cbutton class=" yt-uix-button yt-uix-tooltip" type="button" id="watch-like" onclick=";return false;" title="I like this" data-button-action="playnav.like" role="button" aria-pressed="false"\u003e\u003cimg class="yt-uix-button-icon yt-uix-button-icon-watch-like" s\u0072c="\/\/s.ytimg.com\/yt\/img\/pixel.gif" alt=""\u003e\u003cspan class="yt-uix-button-content"\u003eLike\u003c\/span\u003e\u003c\/button\u003e\n        \u0026nbsp;\n        \u003cbutton class=" yt-uix-button yt-uix-tooltip yt-uix-button-empty" type="button" id="watch-unlike" onclick=";return false;" title="I dislike this" data-button-action="playnav.unlike" role="button" aria-pressed="false"\u003e\u003cimg class="yt-uix-button-icon yt-uix-button-icon-watch-unlike" s\u0072c="\/\/s.ytimg.com\/yt\/img\/pixel.gif" alt=""\u003e\u003c\/button\u003e\n      \u003c\/div\u003e\n      \u003cform method="post" action="\/watch_actions_ajax" name="likeForm" class="hid"\u003e\n        \n        \u003cinput type="hidden" name="action_like_video" value="1"\u003e\n        \u003cinput type="hidden" name="video_id" value="ImXfJAxVWXo"\u003e\n      \u003c\/form\u003e\n      \u003cform method="post" action="\/watch_actions_ajax" name="unlikeForm" class="hid"\u003e\n        \n        \u003cinput type="hidden" name="action_dislike_video" value="1"\u003e\n        \u003cinput type="hidden" name="video_id" value="ImXfJAxVWXo"\u003e\n      \u003c\/form\u003e\n        \u003cdiv id="channel-like-logged-out" class="hid"\u003e\n            \u003cstrong\u003e\u003ca href="https:\/\/www.google.com\/accounts\/ServiceLogin?uilel=3\u0026service=youtube\u0026passive=true\u0026continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3D%252Fuser%252Fpaulsoaresjr\u0026hl=en_US\u0026ltmpl=sso"\u003eSign In\u003c\/a\u003e or \u003ca href="\/signup?new=true\u0026next=%2Fuser%2Fpaulsoaresjr"\u003eSign Up\u003c\/a\u003e now!\n\u003c\/strong\u003e\n\n        \u003c\/div\u003e\n      \u003cdiv id="channel-like-close" class="hid"\u003e\n        \u003cdiv class="close"\u003e\u003cimg s\u0072c="\/\/s.ytimg.com\/yt\/img\/pixel.gif" class="close-button" onclick="playnav.hideLike();"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n    \u003c\/div\u003e\n\n  \u003cdiv id="playnav-curvideo-title" class="inner-box-link-color" dir="ltr"\u003e\n    \u003ca href="\/watch?v=ImXfJAxVWXo\u0026feature=channel_video_title"\u003eMan vs Minecraft - Season 2 Premiere - Day 1, \u0026quot;Stranded!\u0026quot; (Survival Role-play)\u003c\/a\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv id="playnav-curvideo-info-line"\u003e\nFrom:\n    \u003cspan id="playnav-curvideo-channel-name"\u003e\n      \u003ca href="\/user\/paulsoaresjr"\u003epaulsoaresjr\u003c\/a\u003e\n    \u003c\/span\u003e\u0026nbsp;|\n    \u003cspan dir="ltr"\u003eJun 29, 2011\u003c\/span\u003e\n      \u0026nbsp;|\n      \u003cspan id="playnav-curvideo-view-count"\u003e\n552,319 views\n      \u003c\/span\u003e\n  \u003c\/div\u003e\n\n  \u003cdiv class="cb"\u003e\u003c\/div\u003e\n\n    \u003cdiv id="channel-like-result" class="hid"\u003e\n      \u003cdiv id="watch-actions-area" class="yt-rounded"\u003e\u0026nbsp;\u003c\/div\u003e\n    \u003c\/div\u003e\n    \u003cdiv id="channel-like-loading" class="hid"\u003eLoading...\u003c\/div\u003e\n    \u003cdiv class="cb"\u003e\u003c\/div\u003e\n\n  \u003cdiv id="playnav-curvideo-description-container"\u003e\n    \u003cdiv id="playnav-curvideo-description" dir="ltr"\u003eThis is the Season 2 Premiere of Man vs Minecraft, where I must survive alone for 14 days with hardcore rule set and custom monsters from Mo\u0026#39; Creatures mod.\u003cbr \/\u003e\u003cbr \/\u003eRead the complete rules \u0026amp; guidelines here:\u003cbr \/\u003e\u003ca href="http:\/\/www.manvsminecraft.com\/" target="_blank" title="http:\/\/www.manvsminecraft.com\/" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/www.manvsminecraft.com\/\u003c\/a\u003e\u003cbr \/\u003e\u003cbr \/\u003eGet Minecraft here:\u003cbr \/\u003e\u003ca href="http:\/\/minecraft.net" target="_blank" title="http:\/\/minecraft.net" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/minecraft.net\u003c\/a\u003e\u003cbr \/\u003e\u003cbr \/\u003eMy Channel:\u003cbr \/\u003e\u003ca href="http:\/\/www.youtube.com\/user\/paulsoaresjr" target="_blank" title="http:\/\/www.youtube.com\/user\/paulsoaresjr" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/www.youtube.com\/user\/paulsoaresjr\u003c\/a\u003e\u003cbr \/\u003eMy blog:\u003cbr \/\u003e\u003ca href="http:\/\/paulsoaresjr.com" target="_blank" title="http:\/\/paulsoaresjr.com" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/paulsoaresjr.com\u003c\/a\u003e\u003cbr \/\u003eMy Twitter: \u003cbr \/\u003e\u003ca href="http:\/\/twitter.com\/paulsoaresjr" target="_blank" title="http:\/\/twitter.com\/paulsoaresjr" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/twitter.com\/paulsoaresjr\u003c\/a\u003e\u003cbr \/\u003eMy FAQ:\u003cbr \/\u003e\u003ca href="http:\/\/www.youtube.com\/watch?v=bp9NTrLOdCM" target="_blank" title="http:\/\/www.youtube.com\/watch?v=bp9NTrLOdCM" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/www.youtube.com\/watch?v=bp9NTrLOdCM\u003c\/a\u003e\u003cbr \/\u003e\u003cbr \/\u003eMusic credits:\u003cbr \/\u003eJason Shaw @ \u003ca href="http:\/\/www.audionautix.com" target="_blank" title="http:\/\/www.audionautix.com" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/www.audionautix.com\u003c\/a\u003e\u003cbr \/\u003eRyan Johnson @ \u003ca href="http:\/\/ryeguyhead.newgrounds.com\/audio" target="_blank" title="http:\/\/ryeguyhead.newgrounds.com\/audio" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/ryeguyhead.newgrounds.com\/audio\u003c\/a\u003e\u003cbr \/\u003eKevin Macleod @ \u003ca href="http:\/\/incompetech.com\/static\/music" target="_blank" title="http:\/\/incompetech.com\/static\/music" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/incompetech.com\/static\/music\u003c\/a\u003e\u003cbr \/\u003eJarod Wetzel @ \u003ca href="http:\/\/youtube.com\/djrodw" target="_blank" title="http:\/\/youtube.com\/djrodw" rel="nofollow" dir="ltr" class="yt-uix-redirect-link"\u003ehttp:\/\/youtube.com\/djrodw\u003c\/a\u003e\n      \u003cdiv id="playnav-curvideo-description-more-holder"\u003e\n        \u003cdiv id="playnav-curvideo-description-more" class="inner-box-bg-color"\u003e\n          ...\u0026nbsp;\u003ca class="channel-cmd" href="javascript:;" onclick="playnav.toggleFullVideoDescription(true)"\u003e(more info)\u003c\/a\u003e\u0026nbsp;\u0026nbsp;\n        \u003c\/div\u003e\n        \u003cdiv class="cb"\u003e\u003c\/div\u003e\n      \u003c\/div\u003e\n      \u003cspan id="playnav-curvideo-description-less"\u003e\n        \u003ca href="javascript:;" class="channel-cmd" onclick="playnav.toggleFullVideoDescription(false)"\u003e(less info)\u003c\/a\u003e\n      \u003c\/span\u003e\n    \u003c\/div\u003e\n  \u003c\/div\u003e\n\n  \u003ca href="\/watch?v=ImXfJAxVWXo" id="playnav-watch-link" onclick="playnav.goToWatchPage()"\u003eView comments, related videos, and more\u003c\/a\u003e\n\n  \u003cdiv id="playnav-curvideo-controls"\u003e\u003c\/div\u003e\n\n  \u003cdiv class="cb"\u003e\u003c\/div\u003e\n\n  \u003cscript\u003e\n    if (_gel(\'playnav-curvideo-description\').offsetHeight \u003e 28) {\n      _gel(\'playnav-curvideo-description-more-holder\').style.display = \'block\';\n    }\n  \u003c\/script\u003e\n          \u003cscript\u003e\n        window[\'google_language\'] = \'en\';\n      yt.registerGlobal(\'google_cust_age\', \'google_cust_gender\', \'google_language\');\n    \u003c\/script\u003e\n\n  \u003cscript\u003e\n    window[\'google_ad_type\'] = \'image\';\n    window[\'google_ad_width\'] = \'300\';\n    window[\'google_ad_block\'] = \'2\';\n    window[\'google_ad_client\'] = \'ca-pub-6219811747049371\';\n    window[\'google_ad_host\'] = \'ca-host-pub-7807408098209079\';\n    window[\'google_ad_host_tier_id\'] = \'1001145\';\n    window[\'google_ad_channel\'] = \'afv_brand_mpu+afv_user_paulsoaresjr+ytps_default+ytel_profilepage+yt_mpvid_AASqyUbhyZ-TwlAG+yt_cid_509879+ivpypp+ytexp_912202.913519.910206\';\n    window[\'google_video_doc_id\'] = \'yt_ImXfJAxVWXo\';\n    window[\'google_color_border\'] = \'FFFFFF\';\n    window[\'google_color_bg\'] = \'FFFFFF\';\n    window[\'google_color_link\'] = \'0033CC\';\n    window[\'google_color_text\'] = \'444444\';\n    window[\'google_color_url\'] = \'0033CC\';\n    window[\'google_language\'] = \'en\';\n    window[\'google_alternate_ad_url\'] = \'http:\/\/www.youtube.com\/adsense_script.html?v=2\u0026amp;id=watch-channel-brand-div\u0026amp;depth=2\';\n    window[\'google_page_url\'] = \'http:\/\/www.youtube.com\/video\/ImXfJAxVWXo\';\n    if(\'1\' == \'0\') {\n      window[\'google_targeting\'] = \'content\';\n      window[\'google_scs\'] = \'false\';\n   }\n    yt.registerGlobal(\'google_ad_type\', \'google_ad_width\', \'google_ad_block\',\n        \'google_ad_client\', \'google_ad_host\', \'google_ad_host_tier_id\',\n        \'google_ad_channel\', \'google_video_doc_id\', \'google_color_border\',\n        \'google_color_bg\', \'google_color_link\', \'google_color_text\',\n        \'google_color_url\', \'google_language\', \'google_alternate_ad_url\',\n        \'google_eids\', \'google_targeting_video_doc_id\', \'google_page_url\',\n        \'google_targeting\', \'google_previous_watch\');\n  \u003c\/script\u003e\n\n      \u003cscript\u003e\n    function afcAdCall() {\n      var channels = \'afv_brand_mpu+afv_user_paulsoaresjr+ytps_default+ytel_profilepage+yt_mpvid_AASqyUbhyZ-TwlAG+yt_cid_509879+ivpypp+ytexp_912202.913519.910206\';\n      channels = channels.replace(\'0854550288\',\'0854550287\');\n      channels = channels.replace(\'afv_brand_mpu\',\'0854550287\');\n      channels = channels + "+afc_on_page";\n      window[\'google_ad_format\'] = \'300x250_as\';\n      window[\'google_ad_height\'] = \'250\';\n      window[\'google_page_url\'] = \'http:\/\/www.youtube.com\/video\/ImXfJAxVWXo\';\n\n      if(\'1\' == \'0\') {\n        window[\'google_targeting\'] = \'content\';\n        window[\'google_scs\'] = \'false\';\n      }\n\n      var afcOptions = {\n        \'ad_type\' : \'image\',\n        \'format\' : \'300x250_as\',\n        \'ad_block\' : \'2\',\n        \'ad_client\' : \'ca-pub-6219811747049371\',\n        \'ad_host\' : \'ca-host-pub-7807408098209079\',\n        \'ad_host_tier_id\' : \'1001145\',\n        \'ad_channel\' : channels,\n        \'video_doc_id\' : \'yt_ImXfJAxVWXo\',\n        \'color_border\' : \'FFFFFF\',\n        \'color_bg\' : \'FFFFFF\',\n        \'color_link\' : \'0033CC\',\n        \'color_text\' : \'444444\',\n        \'color_url\' : \'0033CC\',\n        \'language\' : \'en\',\n        \'alternate_ad_url\' : \'http:\/\/www.youtube.com\/adsense_script.html?v=2\u0026amp;id=watch-channel-brand-div\u0026amp;depth=2\'\n      };\n      var afcCallback = function() {\n        if (window.google \u0026\u0026 google.ads \u0026\u0026 google.ads.Ad) {\n          yt.www.watch.ads.handleShowAfvCompanionAdDiv(false);\n          var ad = new google.ads.Ad(\'ca-pub-6219811747049371\', \'google_companion_ad_div\', afcOptions);\n        } else {\n          yt.setTimeout(afcCallback, 200);\n        }\n      };\n      afcCallback();\n    }\n    yt.registerGlobal(\'google\', \'afcAdCall\', \'google_ad_format\', \'google_ad_height\', \'google_page_url\', \'google_targeting\');\n  \u003c\/script\u003e\n      \u003cscript s\u0072c="http:\/\/www.google.com\/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22ads%22%2C%22version%22%3A%221%22%2C%22callback%22%3A%22(function()%7B%7D)%22%2C%22packages%22%3A%5B%22content%22%5D%7D%5D%7D"\u003e\u003c\/script\u003e\n\n',
+		  is_as3_player: true,
+		};
+		playnav.setInitialView('play');
+		playnav.setInitialTab('uploads');
+
+		playnav.handleVideoMetadata('', featuredVideoMetadata, true);
+	  </script>
+
+	  <div id="playnav-playview" class="playnav-show">
+		<div id="playnav-player-restricted" class="inner-box-colors" style="display: none">
+		  <div id="playnav-inner-restricted">
+			<div id="playnav-restricted-title-div"><h3 id="playnav-restricted-title"></h3></div>
+
+			<div id="playnav-login-required" class="playnav-restricted-msg">
+			  <p>You must be <a class="playnav-restricted-link" href="/web/20110818152921id_/http://www.youtube.com/user/paulsoaresjr">logged in</a> to view this video.</p>
+			</div>
+			<div id="playnav-controversy" class="playnav-restricted-msg">
+			  <p>The following content has been identified by the YouTube community as being potentially offensive or inappropriate. Viewer discretion is advised. Please <a class="playnav-restricted-link" href="/web/20110818152921id_/http://www.youtube.com/user/paulsoaresjr">confirm</a> that you wish to view this video.</p>
+			</div>
+			<div id="playnav-verify-age-for-age-gated" class="playnav-restricted-msg">
+			  <p>This video or group may contain content that is inappropriate for some users, <a href="http://www.google.com/support/youtube/bin/answer.py?answer=186529" target="_blank">as determined by the video uploader.</a> To view this video or group, please <a class="playnav-restricted-link" href="/web/20110818152921id_/http://www.youtube.com/user/paulsoaresjr">click here</a> to sign in or sign up and verify that you are of the appropriate age.</p>
+			</div>
+			<div id="playnav-verify-age" class="playnav-restricted-msg">
+			  <p>This video or group may contain content that is inappropriate for some users, as flagged by YouTube's user community. Please <a class="playnav-restricted-link" href="/web/20110818152921id_/http://www.youtube.com/user/paulsoaresjr">confirm</a> that you wish to view this video.</p>
+			</div>
+			<div id="playnav-unavailable" class="playnav-restricted-msg">
+			  <p>This video is unavailable.</p>
+			</div>
+			<div id="playnav-custom-error-message" class="playnav-restricted-msg"></div>
+		  </div>
+		</div>
+
+		<div id="playnav-left-panel">
+		  <div class="playnav-player-container"></div>
+		  <div id="playnav-video-details">
+			<div id="playnav-bottom-links">
+			  <div id="playnav-bottom-links-clip" class="playnav-bottom-links-clip">
+				<table>
+				  <tbody>
+					<tr>
+					  <td id="playnav-panel-tab-info" class="panel-tab-selected">
+						<table class="panel-tabs">
+						  <tbody>
+							<tr>
+							  <td class="panel-tab-title-cell">
+								<div class="playnav-panel-tab-icon" id="panel-icon-info" onmouseover="_addclass(_gel('playnav-panel-tab-info'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-info'), 'panel-tab-hovered')" onclick="playnav.selectPanel('info')"></div>
+								<div class="playnav-bottom-link" id="info-bottom-link">
+								  <a href="javascript:;" onmouseover="_addclass(_gel('playnav-panel-tab-info'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-info'), 'panel-tab-hovered')" onclick="playnav.selectPanel('info')">Info</a>
+								</div>
+								<div class="spacer">&nbsp;</div>
+							  </td>
+							</tr>
+							<tr>
+							  <td class="panel-tab-indicator-cell inner-box-opacity">
+								<div class="panel-tab-indicator-arrow"></div>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </td>
+
+					  <td id="playnav-panel-tab-favorite">
+						<table class="panel-tabs">
+						  <tbody>
+							<tr>
+							  <td class="panel-tab-title-cell">
+								<div class="playnav-panel-tab-icon" id="panel-icon-favorite" onmouseover="_addclass(_gel('playnav-panel-tab-favorite'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-favorite'), 'panel-tab-hovered')" onclick="playnav.selectPanel('favorite')"></div>
+								<div class="playnav-bottom-link" id="favorite-bottom-link">
+								  <a href="javascript:;" onmouseover="_addclass(_gel('playnav-panel-tab-favorite'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-favorite'), 'panel-tab-hovered')" onclick="playnav.selectPanel('favorite')">Favorite</a>
+								</div>
+								<div class="spacer">&nbsp;</div>
+							  </td>
+							</tr>
+							<tr>
+							  <td class="panel-tab-indicator-cell inner-box-opacity">
+								<div class="panel-tab-indicator-arrow"></div>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </td>
+
+					  <td id="playnav-panel-tab-share">
+						<table class="panel-tabs">
+						  <tbody>
+							<tr>
+							  <td class="panel-tab-title-cell">
+								<div class="playnav-panel-tab-icon" id="panel-icon-share" onmouseover="_addclass(_gel('playnav-panel-tab-share'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-share'), 'panel-tab-hovered')" onclick="playnav.selectPanel('share')"></div>
+								<div class="playnav-bottom-link" id="share-bottom-link">
+								  <a href="javascript:;" onmouseover="_addclass(_gel('playnav-panel-tab-share'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-share'), 'panel-tab-hovered')" onclick="playnav.selectPanel('share')">Share</a>
+								</div>
+								<div class="spacer">&nbsp;</div>
+							  </td>
+							</tr>
+							<tr>
+							  <td class="panel-tab-indicator-cell inner-box-opacity">
+								<div class="panel-tab-indicator-arrow"></div>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </td>
+
+					  <td id="playnav-panel-tab-flag">
+						<table class="panel-tabs">
+						  <tbody>
+							<tr>
+							  <td class="panel-tab-title-cell">
+								<div class="playnav-panel-tab-icon" id="panel-icon-flag" onmouseover="_addclass(_gel('playnav-panel-tab-flag'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-flag'), 'panel-tab-hovered')" onclick="playnav.selectPanel('flag')"></div>
+								<div class="playnav-bottom-link" id="flag-bottom-link">
+								  <a href="javascript:;" onmouseover="_addclass(_gel('playnav-panel-tab-flag'), 'panel-tab-hovered')" onmouseout="_removeclass(_gel('playnav-panel-tab-flag'), 'panel-tab-hovered')" onclick="playnav.selectPanel('flag')">Flag</a>
+								</div>
+								<div class="spacer">&nbsp;</div>
+							  </td>
+							</tr>
+							<tr>
+							  <td class="panel-tab-indicator-cell inner-box-opacity">
+								<div class="panel-tab-indicator-arrow"></div>
+							  </td>
+							</tr>
+						  </tbody>
+						</table>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+
+			  <div class="cb"></div>
+
+			  <div class="playnav-video-panel inner-box-colors border-box-sizing">
+				<div id="playnav-video-panel-inner" class="playnav-video-panel-inner border-box-sizing">
+				  <div id="playnav-panel-info" class="scrollable"></div>
+				  <div id="playnav-panel-comments" class="hid"></div>
+				  <div id="playnav-panel-favorite" class="hid"></div>
+				  <div id="playnav-panel-share" class="hid scrollable"></div>
+				  <div id="playnav-panel-playlists" class="hid"></div>
+				  <div id="playnav-panel-flag" class="hid scrollable"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div id="playnav-play-panel">
+		  <div id="playnav-play-content">
+			<div class="playnav-playlist-holder" id="playnav-play-playlist-uploads-holder">
+			  <div id="playnav-play-uploads-scrollbox" class="scrollbox-wrapper inner-box-colors">
+				<div class="scrollbox-content playnav-playlist-non-all">
+				  <div class="scrollbox-header">
+					<div class="playnav-playlist-header">
+					  <div class="spacer">&nbsp;</div>
+
+					  <div class="search-box">
+						<input type="text" id="upload_search_query-play" class="box-outline-color search-term" onkeypress="if (event.keyCode == 13) { playnav.searchChannel(this.id); }" />
+						&nbsp;
+						<button type="button" class="yt-uix-button" onclick="playnav.searchChannel('upload_search_query-play');;return false;" role="button" aria-pressed="false"><span class="yt-uix-button-content">Search</span></button>
+					  </div>
+
+					  <div style="display: none" id="uploads-sort">date</div>
+					  <div class="sorters">
+						<a class="sort-desc" href="/user/<%= channel.channelId %>#" onclick="playnav.sort('date', 'asc'); return false;">
+						  Date Added
+						  <img class="sort-arrow" src="/pixel.gif" />
+						</a>
+
+						|
+
+						<a class="sort-" href="/user/<%= channel.channelId %>#" onclick="playnav.sort('popularity', 'desc'); return false;">
+						  Most Viewed
+						  <img class="sort-arrow" src="/pixel.gif" />
+						</a>
+
+						|
+
+						<a class="sort-" href="/user/<%= channel.channelId %>#" onclick="playnav.sort('rating', 'desc'); return false;">
+						  Top Rated
+						  <img class="sort-arrow" src="/pixel.gif" />
+						</a>
+					  </div>
+
+					  <div class="spacer">&nbsp;</div>
+					</div>
+					<div class="scrollbox-separator">
+					  <div class="outer-box-bg-as-border"></div>
+					</div>
+				  </div>
+
+				  <div class="scrollbox-body">
+					<div class="outer-scrollbox">
+					  <div id="playnav-play-uploads-items" class="inner-scrollbox">
+						<div class="pinned">
+						  <div class="highlightbox transparent-link-as-bg-color">
+							<div id="playnav-video-play-uploads-0-7MqkEZn8pN4" class="playnav-item playnav-video pinned-item">
+							  <div style="display: none" class="encryptedVideoId">7MqkEZn8pN4</div>
+
+							  <div id="playnav-video-play-uploads-0-7MqkEZn8pN4-selector" class="selector"></div>
+							  <div class="content">
+								<div class="playnav-video-thumb">
+								  <a href="/watch?v=7MqkEZn8pN4" class="ux-thumb-wrap contains-addto"
+									><span class="video-thumb ux-thumb-96"
+									  ><span class="clip"><img src="/default.jpg" alt="Thumbnail" class="" onclick="playnav.playVideo('uploads','0','7MqkEZn8pN4');return false;" title="Minecraft Tutorial 01 (v2) - How to Survive your First Night (Enhanced Version!)" /></span></span
+									><span class="video-time">14:37</span
+									><span dir="ltr" class="yt-uix-button-group addto-container short video-actions" data-video-ids="7MqkEZn8pN4" data-feature="thumbnail"
+									  ><button
+										type="button"
+										class="start addto-button-plus-hide-arrow yt-uix-button yt-uix-button-short yt-uix-tooltip"
+										onclick=";return false;"
+										title="Add to Watch Later
+"
+										data-button-menu-id="shared-addto-menu"
+										role="button"
+										aria-pressed="false"
+									  >
+										<img class="yt-uix-button-icon yt-uix-button-icon-addto" src="/pixel.gif" alt="" /><span class="yt-uix-button-content"><span class="addto-label">Add to</span></span
+										><img class="yt-uix-button-arrow" src="/pixel.gif" alt="" /></button
+									  ><button type="button" class="end yt-uix-button yt-uix-button-short yt-uix-button-empty" onclick=";return false;" data-button-menu-id="shared-addto-menu" role="button" aria-pressed="false"><img class="yt-uix-button-arrow" src="/pixel.gif" alt="" /></button></span
+								  ></a>
+								</div>
+								<div class="playnav-video-info">
+								  <a href="/watch?v=7MqkEZn8pN4" class="playnav-item-title ellipsis" onclick="playnav.playVideo('uploads','0','7MqkEZn8pN4');return false;" id="playnav-video-title-play-uploads-0-7MqkEZn8pN4"><span dir="ltr">Minecraft Tutorial 01 (v2) - How to Survive your First Night (Enhanced Version!)</span></a>
+
+								  <div class="metadata">
+									<span dir="ltr">2,834,262 views - 8 months ago</span>
+								  </div>
+
+								  <div style="display: none" id="playnav-video-play-uploads-0">7MqkEZn8pN4</div>
+								</div>
+							  </div>
+							</div>
+							<div id="uploads-cb" class="cb"></div>
+							<div class="cb"></div>
+						  </div>
+						</div>
+
+						<div id="playnav-play-uploads-page-0" class="scrollbox-page loaded videos-rows-50">
+<% uploads.forEach(video => { %>
+						  <div id="playnav-video-play-uploads-4-EyE7MgjV5dw" class="playnav-item playnav-video">
+							<div style="display: none" class="encryptedVideoId"><%= video.videoId %></div>
+
+							<div id="playnav-video-play-uploads-4-EyE7MgjV5dw-selector" class="selector"></div>
+							<div class="content">
+							  <div class="playnav-video-thumb">
+								<a href="/watch?v=<%= video.videoId %>" class="ux-thumb-wrap contains-addto"
+								  ><span class="video-thumb ux-thumb-96"
+									><span class="clip"><img src="<%= video.thumbnailUrl %>" alt="Thumbnail" class="" onclick="playnav.playVideo('uploads','4','<%= video.videoId %>');return false;" title="<%= video.title %>" /></span></span
+								  ><span class="video-time"><%= video.lengthString %></span
+								  ><span dir="ltr" class="yt-uix-button-group addto-container short video-actions" data-video-ids="<%= video.videoId %>" data-feature="thumbnail"
+									><button
+									  type="button"
+									  class="start addto-button-plus-hide-arrow yt-uix-button yt-uix-button-short yt-uix-tooltip"
+									  onclick=";return false;"
+									  title="Add to Watch Later
+"
+									  data-button-menu-id="shared-addto-menu"
+									  role="button"
+									  aria-pressed="false"
+									>
+									  <img class="yt-uix-button-icon yt-uix-button-icon-addto" src="/pixel.gif" alt="" /><span class="yt-uix-button-content"><span class="addto-label">Add to</span></span
+									  ><img class="yt-uix-button-arrow" src="/pixel.gif" alt="" /></button
+									><button type="button" class="end yt-uix-button yt-uix-button-short yt-uix-button-empty" onclick=";return false;" data-button-menu-id="shared-addto-menu" role="button" aria-pressed="false"><img class="yt-uix-button-arrow" src="/pixel.gif" alt="" /></button></span
+								></a>
+							  </div>
+							  <div class="playnav-video-info">
+								<a href="/watch?v=<%= video.videoId %>" class="playnav-item-title ellipsis" onclick="playnav.playVideo('uploads','4','<%= video.videoId %>');return false;" id="playnav-video-title-play-uploads-4-<%= video.videoId %>"><span dir="ltr"><%= video.title %></span></a>
+
+								<div class="metadata">
+								  <span dir="ltr"><%= video.viewCount %> views - <%= video.timeAgo %></span>
+								</div>
+
+								<div style="display: none" id="playnav-video-play-uploads-4"><%= video.videoId %></div>
+							  </div>
+							</div>
+						  </div>
+<% }) %>
+						  <div id="uploads-cb" class="cb"></div>
+						</div>
+					  </div>
+					  <div id="single-load-buttons">
+						<button type="button" id="channels-play-more-videos-button-uploads" onclick="playnav.updateScrollbox('playnav-play-uploads-scrollbox', 6);return false;" class="yt-uix-button" role="button" aria-pressed="false"><span class="yt-uix-button-content">Load more</span></button>
+						<span class="hid" id="channels-play-more-videos-loading-uploads"> Loading... </span>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div id="playnav-play-loading" class="loading">
+		  <div class="cover outer-box-bg-color"></div>
+		  <div class="image-holder">
+			<div class="image-holder-middle">
+			  <div class="image-holder-inner">
+				<img src="/icn_loading_animated.gif" alt="Loading..." />
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<script src="/google_services.js.download"></script>
+		<script>
+		  (function () {
+			if (!window.googletag) {
+			  return;
+			}
+			var gutSlot = googletag.defineSlot(
+			  '/4061/ytpwatch/main_509879',
+			  [
+				[300, 250],
+				[300, 60],
+			  ],
+			  'yt-gut-content'
+			);
+			gutSlot.set('ad_type', 'flash');
+			gutSlot.addService(googletag.companionAds());
+			googletag.enableServices();
+
+			yt.setConfig('gut_slot', gutSlot);
+			yt.setConfig('yt_gut_invideo_size', gutSlot.getSizes()[0]);
+			yt.setConfig('yt_gut_instream_size', gutSlot.getSizes()[1]);
+		  })();
+		</script>
+	  </div>
+	  <div id="playnav-gridview" class="playnav-hide">
+		<div id="playnav-grid-panel">
+		  <div id="playnav-grid-content"></div>
+		</div>
+		<div id="playnav-grid-loading" class="loading">
+		  <div class="cover outer-box-bg-color"></div>
+		  <div class="image-holder">
+			<div class="image-holder-middle">
+			  <div class="image-holder-inner">
+				<img src="/icn_loading_animated.gif" alt="Loading..." />
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>

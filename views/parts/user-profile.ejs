@@ -1,0 +1,66 @@
+<div class="inner-box" id="user_profile">
+  <div class="box-title title-text-color">Profile</div>
+
+  <div class="box-editor"></div>
+  <div class="cb"></div>
+
+  <div id="user_profile-body">
+    <div id="user_profile-messages" class="hid"></div>
+
+    <div class="edit_info spacer">&nbsp;</div>
+    <div class="profile_info vcard">
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Name:</div>
+        <div class="profile-info-value fn" id="profile_show_first_name"><%= channel.channelTitle %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Channel Views:</div>
+        <div class="profile-info-value" id="profile_show_viewed_count"><%= channel.viewCount.toLocaleString() %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Total Upload Views:</div>
+        <div class="profile-info-value" id="profile_show_total_video_views"><%= channel.totalUploadViewCount.toLocaleString() %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Joined:</div>
+        <div class="profile-info-value" id="profile_show_member_since"><%= channel.joinDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Latest Activity:</div>
+        <div class="profile-info-value" id="profile_show_last_activity"><%= channel.lastVisitTimeAgo %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Subscribers:</div>
+        <div class="profile-info-value" id="profile_show_subscriber_count"><%= channel.subscriberCount.toLocaleString() %></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="floatL" style="font-weight: bold">Website:</div>
+
+        <div class="floatR"><a href="<%= channel.websiteUrl %>" rel="me" class="yt-uix-redirect-link url" title="<%= channel.websiteUrl %>"><%= channel.websiteUrl %></a></div>
+        <div class="cb"></div>
+      </div>
+
+      <div class="show_info outer-box-bg-as-border" style="border-bottom-width: 1px; margin-bottom: 4px; line-height: 140%" dir="ltr"><%= channel.description %></div>
+
+      <div class="show_info outer-box-bg-as-border">
+        <div class="profile-info-label">Country:</div>
+        <div class="profile-info-value" id="profile_show_country"><%= channel.countryName %></div>
+        <div class="cb"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cb"></div>
+</div>

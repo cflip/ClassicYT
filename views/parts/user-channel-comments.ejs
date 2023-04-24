@@ -1,0 +1,60 @@
+<div class="inner-box" id="user_comments">
+	<div style="zoom: 1">
+	  <div class="box-title title-text-color">Channel Comments (<span name="channel-box-item-count"><%= channel.commentCount %></span>)</div>
+	  <div class="box-editor">
+		<div style="float: right">
+		  <a href="/user/<%= channel.channelId %>#" onclick="javascript:get_page('user_comments', 0, 10, 'False');return false;"> Refresh </a>
+		</div>
+	  </div>
+	  <div class="cb"></div>
+	</div>
+
+	<div id="user_comments-messages" class="hid"></div>
+
+	<div id="user_comments-body">
+	  <div class="commentsTableFull text-field outer-box-bg-as-border" style="_width: 610px">
+		<table border="0" cellspacing="0" cellpadding="0" id="profile_comments_table">
+		  <tbody>
+<% comments.forEach(comment => { %>
+			<tr class="commentsTableFull">
+			  <td valign="top" width="60" style="padding-bottom: 15px">
+				<div id="profile-comment-icon-9FA4ECD3E5772D3E">
+				  <div class="user-thumb-medium">
+					<div>
+					  <a href="/user/<%= comment.authorId %>">
+						<img src="<%= comment.authorPictureUrl %>" alt="<%= comment.authorName %>" title="<%= comment.authorName %>" />
+					  </a>
+					</div>
+				  </div>
+				</div>
+			  </td>
+			  <td valign="top" style="padding-bottom: 15px">
+				<div class="floatL" style="margin-bottom: 5px">
+				  <a name="profile-comment-username" href="/user/<%= comment.authorId %>" style="font-size: 12px"><b><%= comment.authorName %></b></a>
+				  <span class="profile-comment-time-created">(<%= comment.timeAgo %>)</span>
+				</div>
+				<div class="floatR" style="margin-bottom: 5px"></div>
+				<div class="profile-comment-body" dir="ltr" style="clear: both" id="profile-comment-9FA4ECD3E5772D3E"><%= comment.text %></div>
+			  </td>
+			</tr>
+<% }) %>
+		  </tbody>
+		</table>
+	  </div>
+	  <div id="comments-area-alert">
+		<a href="https://web.archive.org/login?next=/user/paulsoaresjr"> Add Comment </a>
+	  </div>
+	  <div style="font-size: 12px; text-align: right; margin-top: 7px; font-weight: bold">
+		&nbsp; 1 &nbsp;
+		<a href="/user/&amp;start=10" onclick="  get_page('user_comments', 10, 10, 'False'); return false">2</a>
+		&nbsp;
+		<a href="/user/&amp;start=20" onclick="  get_page('user_comments', 20, 10, 'False'); return false">3</a>
+		&nbsp;
+		<a href="/user/&amp;start=30" onclick="  get_page('user_comments', 30, 10, 'False'); return false">4</a>
+		&nbsp;
+		<a href="/user/&amp;start=40" onclick="  get_page('user_comments', 40, 10, 'False'); return false">5</a>
+		&nbsp; &nbsp;<a href="/user/&amp;start=10" onclick="  get_page('user_comments', 10, 10, 'False'); return false">Next</a>
+	  </div>
+	</div>
+	<div class="clear"></div>
+  </div>

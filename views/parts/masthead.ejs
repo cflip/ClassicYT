@@ -1,0 +1,18 @@
+<div id="masthead" class="" dir="ltr">
+  <a id="logo-container" href="/" title="YouTube home">
+    <img id="logo" src="/pixel.gif" alt="YouTube home" />
+  </a>
+
+  <div id="masthead-sections">
+    <a href="/videos?feature=mh">Browse </a><a href="/movies?feature=mh">Movies</a> <a href="http://upload.youtube.com/my_videos_upload" class="split end">Upload</a><span class="valign-fix"></span>
+
+    <a class="start" href="/signup?next=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzhJcwrsUSdc%26gl%3DUS%26hl%3Den%26amp%3Bhas_verified%3D1">Create Account</a> <a class="end" href="https://accounts.google.com/ServiceLogin?uilel=3&amp;service=youtube&amp;passive=true&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26nomobiletemp%3D1%26hl%3Den_US%26next%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253DzhJcwrsUSdc%2526gl%253DUS%2526hl%253Den%2526amp%253Bhas_verified%253D1&amp;hl=en_US&amp;ltmpl=sso">Sign In</a>
+  </div>
+
+  <form id="masthead-search" class="search-form" autocomplete="off" action="/results" onsubmit="if (_gel('masthead-search-term').value == '') return false;">
+    <button class="search-button yt-uix-button" onclick="if (_gel('masthead-search-term').value == '') return false; _gel('masthead-search').submit(); return false;;return false;" type="button" id="search-btn" dir="ltr" tabindex="2" role="button"><span class="yt-uix-button-content">Search</span></button>
+    <div id="masthead-search-terms" dir="ltr">
+      <label><input id="masthead-search-term" onfocus="" class="search-term" name="search_query" value="" type="text" tabindex="1" onkeyup="goog.i18n.bidi.setDirAttribute(event,this)" title="Search" /></label>
+    </div>
+  </form>
+</div>
