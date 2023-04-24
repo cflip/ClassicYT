@@ -33,7 +33,7 @@ export interface VideoShortData {
 export abstract class VideoProvider extends DataProvider<VideoID, VideoFullData> {
 }
 
-export abstract class SuggestedVideosProvider extends DataProvider<VideoID, VideoShortData[]> {
+export abstract class SuggestedVideosProvider extends DataProvider<VideoFullData, VideoShortData[]> {
 }
 
 export abstract class ChannelUploadsProvider extends DataProvider<ChannelID, VideoShortData[]> {

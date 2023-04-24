@@ -26,16 +26,17 @@ export default class WatchPageController {
 		const videoId: string = req.query.v!.toString();
 		Promise.all([
 			this.mainVideoProvider.get(videoId),
-			this.suggestionsProvider.get(videoId),
 			this.commentsProvider.get(videoId),
 			this.topCommentsProvider.get(videoId)
 		]).then(data => {
-			res.render('watch.ejs', {
-				video: data[0],
-				suggestions: data[1],
-				comments: data[2],
-				topComments: data[3]
-			});
+			this.suggestionsProvider.get(data[0]).then(suggestions => {
+				res.render('watch.ejs', {
+					video: data[0],
+					suggestions: suggestions,
+					comments: data[1],
+					topComments: data[2]
+				});
+			})
 		});
 	}
 	
@@ -68,19 +69,21 @@ export default class WatchPageController {
 				});
 			})
 		} else if (req.query.action_more_related_videos == '1') {
-			this.suggestionsProvider.get(req.query.video_id!.toString())
-			.then((suggestions: VideoShortData[]) => {
-				ejs.renderFile('./views/ajax/watch-related-videos.ejs', { suggestedVideos: suggestions }, {}, (err: string, str: string) => {
-					if (err) {
-						console.error(err);
-						res.status(500);
-						res.send(err);
-					} else {
-						res.set('Content-Type', 'text/json');
-						res.send(JSON.stringify({ html: str }));
-					}
+			this.mainVideoProvider.get(req.query.video_id!.toString()).then(video => {
+				this.suggestionsProvider.get(video)
+				.then((suggestions: VideoShortData[]) => {
+					ejs.renderFile('./views/ajax/watch-related-videos.ejs', { suggestedVideos: suggestions }, {}, (err: string, str: string) => {
+						if (err) {
+							console.error(err);
+							res.status(500);
+							res.send(err);
+						} else {
+							res.set('Content-Type', 'text/json');
+							res.send(JSON.stringify({ html: str }));
+						}
+					});
 				});
-			})
+			});
 		} else {
 			res.status(404);
 			res.send('I dunno');

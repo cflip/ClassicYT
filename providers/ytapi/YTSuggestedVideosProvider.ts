@@ -1,4 +1,4 @@
-import { SuggestedVideosProvider, VideoID, VideoShortData } from "../VideoProviders";
+import { SuggestedVideosProvider, VideoFullData, VideoID, VideoShortData } from '../VideoProviders';
 
 const { google } = require('googleapis');
 const youtube = google.youtube('v3');
@@ -17,12 +17,14 @@ export default class YTSuggestedVideosProvider extends SuggestedVideosProvider {
 		this.apiKey = key;
 	}
 
-	async get(videoId: VideoID): Promise<VideoShortData[]> {
+	async get(video: VideoFullData): Promise<VideoShortData[]> {
 		var results: VideoShortData[] = [];
-	
+
 		// TODO: Using the search API is expensive, I need to come up with a better way to suggest videos without it.
-		const response = await youtube.search.list(this.makeSuggestionsSearchRequest(videoId, new Date(2011), []));
-	
+		const response = await youtube.search.list(
+			this.makeSuggestionsSearchRequest(video.videoId, video.publishDate, video.tags)
+		);
+
 		response.data.items.forEach((vid: any) => {
 			results.push({
 				videoId: vid.id.videoId,
@@ -34,21 +36,21 @@ export default class YTSuggestedVideosProvider extends SuggestedVideosProvider {
 				thumbnailUrl: vid.snippet.thumbnails.default.url,
 			});
 		});
-	
+
 		return results;
 	}
-	
+
 	/**
 	 * Builds and returns a request to be given to YouTube's search:list API to
 	 * find a list of recommended videos that is 'era-appropriate.'
-	 * 
+	 *
 	 * @param videoId The ID of the current video.
 	 * @param videoDate A Date object containing current video's publish date.
 	 * @param videoTags A list of tags relevant to the current video.
 	 */
 	private makeSuggestionsSearchRequest(videoId: VideoID, videoDate: Date, videoTags: string[]) {
 		const NUM_RESULTS = 18;
-		const NUM_SEARCH_TAGS = 10;
+		const NUM_SEARCH_TAGS = 6;
 
 		var yearLater = videoDate;
 		yearLater.setFullYear(videoDate.getFullYear() + 1);
@@ -61,7 +63,7 @@ export default class YTSuggestedVideosProvider extends SuggestedVideosProvider {
 				part: 'snippet',
 				relatedToVideoId: videoId,
 				publishedBefore: yearLater.toISOString(),
-				maxResults: NUM_RESULTS
+				maxResults: NUM_RESULTS,
 			};
 		}
 
@@ -71,7 +73,7 @@ export default class YTSuggestedVideosProvider extends SuggestedVideosProvider {
 		// TODO: Because tags can sometimes be multiple words, it might be better to limit the number of words instead.
 		var numTagsToSearch = Math.min(videoTags.length, NUM_SEARCH_TAGS);
 
-		var searchString = "";
+		var searchString = '';
 		for (var i = 0; i < numTagsToSearch; i++) {
 			searchString += videoTags[i] + ' ';
 		}
@@ -84,7 +86,7 @@ export default class YTSuggestedVideosProvider extends SuggestedVideosProvider {
 			part: 'snippet',
 			q: searchString,
 			publishedBefore: yearLater.toISOString(),
-			maxResults: NUM_RESULTS
+			maxResults: NUM_RESULTS,
 		};
 	}
 }

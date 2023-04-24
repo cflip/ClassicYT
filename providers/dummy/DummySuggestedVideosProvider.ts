@@ -1,7 +1,7 @@
-import { VideoShortData, VideoID, SuggestedVideosProvider } from "../VideoProviders";
+import { VideoShortData, SuggestedVideosProvider, VideoFullData } from "../VideoProviders";
 
 export default class DummySuggestedVideosProvider extends SuggestedVideosProvider {
-	async get(videoId: VideoID): Promise<VideoShortData[]> {
+	async get(video: VideoFullData): Promise<VideoShortData[]> {
 		return [
 			{
 				videoId: 'aZ98AXxtTjQ',
