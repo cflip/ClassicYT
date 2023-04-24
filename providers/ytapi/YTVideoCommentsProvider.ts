@@ -1,3 +1,4 @@
+import { youtube_v3 } from "googleapis";
 import { CommentData, VideoCommentsProvider } from "../CommentProviders";
 import { VideoID } from "../VideoProviders";
 
@@ -10,26 +11,26 @@ const en = require('javascript-time-ago/locale/en');
 TimeAgo.addDefaultLocale(en);
 const timeAgoFormatter = new TimeAgo();
 
-export default class YTVideoCommentsProvider extends VideoCommentsProvider {
-	private apiKey: string;
+abstract class YTAbstractVideoCommentsProvider extends VideoCommentsProvider {
+	protected apiKey: string;
 
 	constructor(key: string) {
 		super();
 		this.apiKey = key;
 	}
 
+	abstract getRequestData(videoId: VideoID): youtube_v3.Params$Resource$Commentthreads$List;
+
 	async get(videoId: VideoID): Promise<CommentData[]> {
 		var results: CommentData[] = [];
-		
-		const response = await youtube.commentThreads.list({
-			key: this.apiKey,
-			part: 'snippet',
-			videoId: videoId,
-			maxResults: 10,
-			textFormat: 'plainText'
-		});
 
-		// TODO: Handle errors (e.g. disabled comments)
+		let response;
+		try {
+			response = await youtube.commentThreads.list(this.getRequestData(videoId));
+		} catch (err) {
+			console.error('Unable to retrieve comments for video', videoId);
+			return [];
+		}
 
 		response.data.items.forEach((commentThread: any) => {
 			const comment = commentThread.snippet.topLevelComment;
@@ -45,5 +46,38 @@ export default class YTVideoCommentsProvider extends VideoCommentsProvider {
 		});
 
 		return results;
+	}
+}
+
+export class YTVideoCommentsProvider extends YTAbstractVideoCommentsProvider {
+	constructor(key: string) {
+		super(key);
+	}
+
+	getRequestData(videoId: VideoID): youtube_v3.Params$Resource$Commentthreads$List {
+		return {
+			key: this.apiKey,
+			part: ['snippet'],
+			videoId: videoId,
+			maxResults: 10,
+			textFormat: 'plainText'
+		}
+	}
+}
+
+export class YTVideoTopCommentsProvider extends YTAbstractVideoCommentsProvider {
+	constructor(key: string) {
+		super(key);
+	}
+
+	getRequestData(videoId: VideoID): youtube_v3.Params$Resource$Commentthreads$List {
+		return {
+			key: this.apiKey,
+			part: ['snippet'],
+			order: 'relevance',
+			videoId: videoId,
+			maxResults: 2,
+			textFormat: 'plainText'
+		}
 	}
 }

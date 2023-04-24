@@ -13,8 +13,7 @@ import YTChannelUploadsProvider from "./providers/ytapi/YTChannelUploadsProvider
 import YTChannelCommentsProvider from "./providers/ytapi/YTChannelCommentsProvider";
 import YTVideoProvider from "./providers/ytapi/YTVideoProvider";
 import YTSuggestedVideosProvider from "./providers/ytapi/YTSuggestedVideosProvider";
-import YTVideoCommentsProvider from "./providers/ytapi/YTVideoCommentsProvider";
-import YTVideoTopCommentsProvider from "./providers/ytapi/YTVideoTopCommentsProvider";
+import { YTVideoCommentsProvider, YTVideoTopCommentsProvider } from "./providers/ytapi/YTVideoCommentsProvider";
 
 const express = require('express');
 const app = express();
