@@ -36,7 +36,7 @@ abstract class YTAbstractVideoCommentsProvider extends VideoCommentsProvider {
 			const comment = commentThread.snippet.topLevelComment;
 			results.push({
 				text: comment.snippet.textDisplay,
-				authorId: comment.snippet.authorChannelId,
+				authorId: comment.snippet.authorChannelId.value,
 				authorName: comment.snippet.authorDisplayName,
 				authorPictureUrl: comment.snippet.authorProfileImageUrl,
 				likeCount: comment.snippet.likeCount,
